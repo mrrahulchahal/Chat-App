@@ -16,6 +16,7 @@ public class ChatClientGUI extends JFrame {
       setSize(400, 500);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       Color backgroundColor = new Color(240, 240, 240);
+      setBackground(backgroundColor);
       Color buttonColor = new Color(75, 75, 75);
       Color textColor = new Color(50, 50, 50);
       Font textFont = new Font("Arial", Font.PLAIN, 14);
@@ -65,6 +66,7 @@ public class ChatClientGUI extends JFrame {
       add(bottomPanel, BorderLayout.SOUTH);
       try {
           this.client = new ChatClient("127.0.0.1", 5000, this::onMessageReceived);
+          client.sendMessage("join " + name);
           client.startClient();
       } catch (IOException e) {
           e.printStackTrace();
